@@ -19731,14 +19731,14 @@
         var max = Math.max.apply(Math, _toConsumableArray(w.globals.series[i]));
 
         if (heatmap.colorScale.inverse) {
-          rev_arr = [];
+          var rev_arr = [];
 
-          for (k = 0; k < w.globals.series.length; k++) {
+          for (var k = 0; k < w.globals.series.length; k++) {
             rev_arr.push(w.globals.series[k][j]);
           }
 
-          min = Math.min.apply(Math, _toConsumableArray(rev_arr));
-          max = Math.max.apply(Math, _toConsumableArray(rev_arr));
+          min = Math.min.apply(Math, rev_arr);
+          max = Math.max.apply(Math, rev_arr);
         }
 
         if (!heatmap.distributed) {

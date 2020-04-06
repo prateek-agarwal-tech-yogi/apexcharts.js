@@ -266,8 +266,8 @@ export default class HeatMap {
     let min = Math.min(...w.globals.series[i])
     let max = Math.max(...w.globals.series[i])
     if (heatmap.colorScale.inverse) {
-      rev_arr = []
-      for (k = 0; k < w.globals.series.length; k++) {
+      let rev_arr = []
+      for (let k = 0; k < w.globals.series.length; k++) {
         rev_arr.push(w.globals.series[k][j])
       }
       min = Math.min(...rev_arr)
