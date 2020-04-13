@@ -292,7 +292,22 @@ export default class HeatMap {
 
     let total = Math.abs(max) + Math.abs(min)
 
-    let percent = (100 * val) / (total === 0 ? total - 0.000001 : total)
+    let ascending = heatmap.colorScale.ascending
+
+    if (typeof heatmap.colorScale.ascending !== 'undefined') {
+      ascending = heatmap.colorScale.ascending
+    }
+    console.log('Apexcharts: ', ascending)
+    let denom = total === 0 ? total - 0.000001 : total
+    let numer = 0.0
+    if (ascending || val === null) {
+      numer = 100 * val
+    } else {
+      numer = 100 * (denom - val)
+    }
+    let percent = numer / denom
+
+    //let percent = (100 * val) / (total === 0 ? total - 0.000001 : total)
 
     if (heatmap.colorScale.ranges.length > 0) {
       const colorRange = heatmap.colorScale.ranges

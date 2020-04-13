@@ -19752,7 +19752,23 @@
         }
 
         var total = Math.abs(max) + Math.abs(min);
-        var percent = 100 * val / (total === 0 ? total - 0.000001 : total);
+        var ascending = heatmap.colorScale.ascending;
+
+        if (typeof heatmap.colorScale.ascending !== 'undefined') {
+          ascending = heatmap.colorScale.ascending;
+        }
+
+        console.log('Apexcharts: ', ascending);
+        var denom = total === 0 ? total - 0.000001 : total;
+        var numer = 0.0;
+
+        if (ascending || val === null) {
+          numer = 100 * val;
+        } else {
+          numer = 100 * (denom - val);
+        }
+
+        var percent = numer / denom; //let percent = (100 * val) / (total === 0 ? total - 0.000001 : total)
 
         if (heatmap.colorScale.ranges.length > 0) {
           var colorRange = heatmap.colorScale.ranges;
